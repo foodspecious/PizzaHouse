@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h2>Login</h2>
+    <form action="" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" name="username" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" required><br>
+
+        <input type="submit" value="Login">
+    </form>
+    <?php
+// Connect to the database (Replace with your database credentials)
+$db = new mysqli("localhost","root", "", "pizza");
+
+if ($db->connect_error) {
+    die("Connection failed: " . $db->connect_error);
+}
+
+if(isset($_POST['submit'])){
+$username = $_POST['username'];
+$password = $_POST['password'];
+
+// Check user credentials
+$sql = "SELECT * FROM user_details WHERE username = '$username'";
+$result = $db->query($sql);
+
+if ($result->num_rows == 1) {
+    $row = $result->fetch_assoc();
+    if (password_verify($password, $row['password'])) {
+        echo "Login successful";
+    } else {
+        echo "Incorrect password";
+    }
+} else {
+    echo "User not found";
+}
+}
+$db->close();
+?>
+</body>
+</html>
+ <div class="container">
+        <div class="inside-contact">
+          <h2>Contact Us</h2>
+          <h3>
+             <span id="confirm">
+          </h3>
+          <p>Name *</p>
+          <input id="txt_name" type="text" Required="required">
+          <p>Email *</p>
+          <input id="txt_email" type="text" Required="required">
+          <p>Subject *</p>
+          <textarea id="txt_message" rows="3" cols="20" Required="required" ></textarea>
+          <input type="submit" id="btn_send" value="SEND">
+       </div>
+    </div>
+ </div>
+</div>
+ .inside-contact{
+    width:90%;
+    margin:0 auto;
+	flex: 1;
+	position:absolute;
+	top: 20%;
+    left: 5%;
+}
+ 
+.inside-contact h2{
+    color:black;
+	font-size: 60px;
+	text-shadow: 2px 2px 2px white;
+	font-family: cursive;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	float: center
+	left 10px;
+	
+}
+ 
+.inside-contact h3{
+    text-align:center;
+    font-size:16px;
+    color:#0085e2;
+}
+.inside-contact input, .inside-contact textarea{
+    width:100%;
+    background-color:#eee;
+    border:1px solid black;
+    padding:5px 10px;
+    margin-bottom:20px;
+}
+.inside-contact input[type=submit]{
+    background-color:#000;
+    color:#fff;
+    transition:0.2s;
+    border:2px solid #000;
+    margin:30px 0;
+}
+.inside-contact input[type=submit]:hover{
+    background-color:#fff;
+    color:#000;
+    transition:0.2s;
+} 
+<label for="username">Username:</label>
+.input-box label{
+            position:absolute;
+            top:50%;
+            left:5px;
+            transform: translateY(-50%);
+            font-size:1em;
+            color:black;
+            font-weight:500;
+            pointer-events:none;
+            transition:.5s;
+        }
+        .input-box input:focus~label,
+        .input-box input:valid~label{
+            top:-5px;
+        }
+        .menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+	justify-content: space-evenly ;
+	align-items: center;
+        }
+        .menu-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Set the width of your card */
+    height: 400px; /* Set the height of your card */
+    border: 1px solid #ccc; /* Optional: add border for visual clarity */
+    overflow: hidden;
+}
+if ($result->num_rows == 1) {
+    $row = $result->fetch_assoc();
+    if (password_verify($password, $row['password'])) {
+        // Start a session and store user information
+        session_start();
+        $_SESSION['user_id'] = $row['id'];
+        $_SESSION['username'] = $row['username'];
+
+        // Redirect to another page (e.g., welcome.php)
+        header("Location: welcome.php");
+        exit();
+         // Connect to the database (Replace with your database credentials)
+    $db = new mysqli("localhost", "root", "", "pizza");
+
+    if ($db->connect_error) {
+        die("Connection failed: " . $db->connect_error);
+    }
+
+    if (isset($_POST['submit'])) { // Check if the form is submitted
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        // Check user credentials
+        $sql = "SELECT * FROM user_details WHERE username = '$username'";
+        $result = $db->query($sql);
+
+        if ($result->num_rows == 1) {
+            $row = $result->fetch_assoc();
+            if (password_verify($password, $row['password'])) {
+                // Start a session and store user information
+                session_start();
+                $_SESSION['user_id'] = $row['id'];
+                $_SESSION['username'] = $row['username'];
+
+            
+                // Redirect to another page if needed
+               
+                header("Location: pizza.html");
+                exit();
+                
+            }else {
+                echo "Incorrect password";
+            }
+        } else {
+            echo "<p class=loginmsg>User not found</p>";
+        }
+    }
+
+    $db->close();
+
+
+****************************************************************************************************************
+
+
+     <?php
+    // Connect to the database (Replace with your database credentials)
+     $db = new mysqli("localhost", "root", "", "pizza");
+    
+    if ($db->connect_error) {
+        die("Connection failed: " . $db->connect_error);
+    }
+    
+    if (isset($_POST['submit'])) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+    
+        // Check user credentials
+        $sql = "SELECT * FROM user_details WHERE username = '$username'";
+        $result = $db->query($sql);
+    
+        if ($result->num_rows == 1) {
+            $row = $result->fetch_assoc();
+            if (password_verify($password, $row['password'])) {
+                // Login successful
+                // Start a session and store user information
+               
+                $_SESSION['user_id'] = $row['id'];
+                $_SESSION['username'] = $row['username'];
+    
+                // Redirect to another page 
+                header("Location: pizza.html");
+                exit();
+            } else {
+                echo "Incorrect password";
+            }
+        } else {
+            echo "<p class=loginmsg>User not found</p>";
+        }
+    }
+    
+    $db->close();
+   
+    
+    ?>

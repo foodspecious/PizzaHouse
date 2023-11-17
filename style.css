@@ -1,0 +1,273 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: century Gothic;
+}
+header{
+	
+	background: #212121;
+	width: 100%;
+	height: 40px;
+	position: fixed;
+	border-radius: 5px;
+    padding: 10px;
+    top: 0;
+    z-index: 1000;
+}
+
+	main{
+		display:flex;
+		min-height:100vh;
+		align-items:center;
+		justify-content:center;
+		width: 100%;
+		height: 100%;
+		background-image: url(newabout.jpg);
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+	
+	
+}
+
+
+ul{
+	float: right;
+	list-style-type: none;
+	margin-top: 10px;
+}
+ul li{
+	display: inline-block;
+}
+ul li a{
+	text-decoration: none;
+	color:black;
+	font-weight: 600 ;
+	padding: 5px 20px;
+	border: 1px solid transparent;
+	transition: 0.6s ease;
+	border-radius: 20px;
+}
+ul li a:hover{
+	background-color:black;
+	color:whitesmoke;
+}
+ul li.active a{
+	background-color: black;
+	color: whitesmoke;
+}
+.logo img{
+	position: fixed;
+	top: 0;
+	left: 0;
+	float:left;
+	width: 90px;
+	height: 75px;
+}
+.main{
+	max-width: 1200px;
+	margin: auto;
+}
+ #about{
+  padding: 25px 0 25px;
+}
+#about_row{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	padding: 0 100px 0 100px;
+}
+.about_col{
+	flex: 1;
+	position:absolute;
+	top: 20%;
+    left: 5%;
+}
+
+.about_col h1{
+	color:black;
+	font-size: 60px;
+	text-shadow: 2px 2px 2px white;
+	font-family: cursive;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+}
+.about_col p{
+	margin-top: 70px;
+	color: white;
+	display: flex;
+	margin-right: 70px;
+	text-align: center;
+	font-weight: bold;
+	justify-content: center;
+}
+.contact-form {
+	background-color: #f2f2f2;
+	padding: 20px;
+	border-radius: 10px;
+	width:90%;
+	
+    margin:0 auto;
+	flex: 1;
+	position: absolute;
+	left: 43px;
+	display: flex;
+	flex-direction: column;
+	margin-top: 80px;
+  }
+  
+  .contact-form label {
+	color: black;
+  }
+  
+  .contact-form .heading {
+	color: black;
+	margin-bottom: 12px;
+	font-weight: bold;
+	display: block; 
+	font-size: 60px;
+	text-shadow: 2px 2px 2px white;
+	font-family: cursive;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	float: center;
+	left: 10px;
+  }
+  
+  .contact-form form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: left;
+	font-weight: 600;
+  }
+
+
+  .form-name,.form-email,.form-message{
+	text-align: left;
+  }
+  
+  .contact-form label {
+	margin-bottom: 10px;
+	text-align: left;
+  }
+  
+  textarea {
+	resize: none;
+	height: 80px;
+	width: 200px;
+  }
+  
+  .contact-form input, .contact-form textarea {
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	width:100%;
+    background-color:#eee;
+    border:1px solid black;
+    
+  }
+  
+  .contact-form input:focus, .contact-form textarea:focus {
+	outline: none;
+	box-shadow: 0 0 5px #ff6384;
+	transform: scale(1.05);
+	transition: transform 0.3s ease-in-out;
+  }
+  
+  .contact-form button[type="submit"] {
+	background-color: #000000;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	padding: 10px 20px;
+	font-size: 16px;
+	cursor: pointer;
+  }
+  
+  .contact-form button[type="submit"]:hover {
+	transform: scale(1.1);
+	transition: transform 0.3s ease-in-out;
+  }
+  
+  
+ 
+
+.container{
+	margin: 0px;
+	padding: 0px;
+justify-content: center;
+
+}
+.menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+	justify-content: space-evenly ;
+	align-items: center;
+        }
+
+.menu{
+	width:90%;
+    margin:0 auto;
+	flex: 1;
+	position:absolute;
+	top: 20%;
+    left: 5%;
+}
+.menu h1{
+	color:black;
+	font-size: 60px;
+	text-shadow: 2px 2px 2px white;
+	font-family: cursive;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	float: center;
+	left: 10px;
+}
+.menu-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Set the width of your card */
+    height: 320px; /* Set the height of your card */
+    border: 1px solid #ccc; /* Optional: add border for visual clarity */
+    overflow: hidden;
+}
+
+.menu-item img {
+    border-radius: 4px;
+	max-width: 100%; /* Ensure the image does not exceed the width of the card */
+    max-height: 100%; /* Ensure the image does not exceed the height of the card */
+    display: block; /* Remove any default inline spacing */
+    margin: auto;
+	height: 200px;
+}
+
+.menu-item h2 {
+    margin-top: 10px;
+	text-align: center;
+}
+
+.menu-item p {
+    margin: 10px 0;
+}
+
+.menu-item span {
+    display: block;
+    font-weight: bold;
+    color: #4caf50;
+    margin-top: 10px;
+}
+
+.card-links{
+	text-decoration: none;
+	color: #000000;
+}
