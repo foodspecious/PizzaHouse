@@ -13,7 +13,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-session_start();
+session_start(); //kebab
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['items']) && !empty($_POST['items'])) {
