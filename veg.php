@@ -85,14 +85,14 @@ ul li.active a{
 	        font-family: cursive;
 	        display: flex;
 	        justify-content: center;
-        }
+	 }
 
         .card img {
             max-width: 100%; /* Ensure the image does not exceed the width of the card */
             max-height: 90%; /* Adjust the height as needed */
             border-radius: 8px; /* Add rounded corners for a nicer look */
             display: inline-block; /* Remove any default inline spacing */
-    margin: auto;
+            margin: auto;
         }
         .checkout-btn{
             position:absolute;
@@ -128,7 +128,7 @@ ul li.active a{
   </div>
 </header>
 <main>
-    <h2>NON-VEG PIZZA</h2>
+    <h2>VEG PIZZA</h2>
 
     <form action="checkout.php" method="post">
     <input type="submit" class="checkout-btn" value="Checkout">
@@ -136,14 +136,14 @@ ul li.active a{
         // Assume you have an array of cards with associated image paths
         session_start();
         $cards = array(
-            "CHICKEN FIESTA" => "chicken fiesta.jpg",
-            "CHICKEN DOMINATOR" => "chicken-dominator.jpg",
-            "CHICKEN GOLDEN DELIGHT" => "chicken-golden.jpg",
-            "PERI PERI CHICKEN" => "peri-peri-chicken.jpg",
-            "PEPPER BARBECUE CHICKEN" => "pepper-barbecue.jpg",
-            "INDI CHICKEN TIKKA" => "tikka.png",
-            "CHICKEN PEPPERONI " => "pepperoni.png",
-            "CHICKEN SAUSAGE" => "chicken sausage.png"
+            "MEXICAN GREEN WAVE" => "mexican green wave.jpg",
+            "DELUX VEGGIE" => "delux veggie.jpg",
+            "PEPPY PANEER" => "peppy paneer.jpg",
+            "DOUBLE CHEESE MARGHERITA" => "d cheese margherita.jpg",
+            "VEG EXTRAVANCA" => "veg extravanca.jpg",
+            "CHEESE TOMATO" => "cheese tomato.png",
+            "TOMATO " => "tomato pizza.png",
+            "PRIME CHEESY" => "PrimeCheesy.jpg"
         );
 
         // Loop through the cards and display them with checkboxes
@@ -153,7 +153,7 @@ ul li.active a{
             echo '<img src="' . $imagePath . '" alt="' . $card . '">' . $card . '</label></div>';
         }
         ?>
-        
+       
     </form>
     <script>
         // JavaScript function to add selected card to the cart

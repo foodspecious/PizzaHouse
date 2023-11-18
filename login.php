@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php
+    session_start();
      $db = mysqli_connect("localhost","root", "", "pizza");
 
 // if ($db->connect_error) {
@@ -25,7 +26,7 @@
          if ($result->num_rows == 1) {
             echo "<script>console.log('INSIDE IF');</script>";
              $_SESSION['username'] = $username;
-             header("Location:pizza.html");
+             header("Location:pizza.php");
              exit();
          } else {
             echo "<p class=loginmsg>User not found</p>";

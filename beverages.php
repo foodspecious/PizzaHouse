@@ -66,10 +66,10 @@ ul li.active a{
         /* Add some basic styling for clarity */
         .card {
             border: 1px solid #ccc;
-            padding: 10px;
+            padding: 9px;
             margin: 10px;
             width: 250px;
-            height: 250px;
+            height: 180px;
             margin-left: 45px;
             display: inline-block;
             justify-content: center;
@@ -89,10 +89,10 @@ ul li.active a{
 
         .card img {
             max-width: 100%; /* Ensure the image does not exceed the width of the card */
-            max-height: 90%; /* Adjust the height as needed */
+            max-height: 80%; /* Adjust the height as needed */
             border-radius: 8px; /* Add rounded corners for a nicer look */
             display: inline-block; /* Remove any default inline spacing */
-    margin: auto;
+            margin: auto;
         }
         .checkout-btn{
             position:absolute;
@@ -128,7 +128,7 @@ ul li.active a{
   </div>
 </header>
 <main>
-    <h2>NON-VEG PIZZA</h2>
+    <h2>BEVARAGES</h2>
 
     <form action="checkout.php" method="post">
     <input type="submit" class="checkout-btn" value="Checkout">
@@ -136,14 +136,14 @@ ul li.active a{
         // Assume you have an array of cards with associated image paths
         session_start();
         $cards = array(
-            "CHICKEN FIESTA" => "chicken fiesta.jpg",
-            "CHICKEN DOMINATOR" => "chicken-dominator.jpg",
-            "CHICKEN GOLDEN DELIGHT" => "chicken-golden.jpg",
-            "PERI PERI CHICKEN" => "peri-peri-chicken.jpg",
-            "PEPPER BARBECUE CHICKEN" => "pepper-barbecue.jpg",
-            "INDI CHICKEN TIKKA" => "tikka.png",
-            "CHICKEN PEPPERONI " => "pepperoni.png",
-            "CHICKEN SAUSAGE" => "chicken sausage.png"
+            "HOT BEVARAGES" => "hot bevarages.jpg",
+            "JUICES" => "juices.jpg",
+            "ICED LEMON TEA" => "Iced-Lemon-Tea.jpg",
+            "SUMMER COCKTAILS" => "summer-cocktails.jpg",
+            "SHAKES" => "shakes.jpg",
+            "WINES" => "wines.jpg",
+            "COLD BEVARAGES " => "cold beverages.png",
+            "JUICY SHOTS" => "juicy shots.jpg"
         );
 
         // Loop through the cards and display them with checkboxes
