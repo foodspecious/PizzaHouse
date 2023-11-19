@@ -12,6 +12,20 @@
 justify-content: center;
 
 }
+
+      main{
+	display:flex;
+	min-height:100vh;
+	align-items:center;
+	justify-content:center;
+	width: 100%;
+	height: 100%;
+	background-image: url(pizzamenu.jpg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+    
     </style>
   </head>
 <body>

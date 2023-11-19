@@ -1,3 +1,4 @@
+
 <?php
 // Assume you have a database connection
 $servername = "localhost";
@@ -24,7 +25,26 @@ $cart_items = $_POST["items"];
 
 
 $items_in_card_string = "";
+$sql = "SELECT username, cart FROM user_details";
+$result = mysqli_query($sql1);
 
+// Display the data
+if ($result->num_rows > 0) {
+    echo "<table border='1'>
+            <tr>
+                <th>Username</th>
+                <th>Cart</th>
+            </tr>";
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr>
+                <td>" . $row['username'] . "</td>
+                <td>" . $row['cart'] . "</td>
+            </tr>";
+    }
+    echo "</table>";
+} else {
+    echo "No records found";
+}
 foreach($cart_items as $cart_item){
     $items_in_card_string = $items_in_card_string . ", " . $cart_item;
 }

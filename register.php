@@ -160,8 +160,8 @@ ul li.active a{
 }
 .registermsg{
     position:absolute;
-    top:480px;
-    left:500px;
+    top:510px;
+    left:580px;
     padding:10px;
 }
 
@@ -214,7 +214,7 @@ ul li.active a{
   </div>
     <?php
 // Connect to the database (Replace with your database credentials)
-$db = new mysqli("localhost", "root", "", "pizza");
+$db = mysqli_connect("localhost", "root", "", "pizza");
 
 if ($db->connect_error) {
     die("Connection failed: " . $db->connect_error);
