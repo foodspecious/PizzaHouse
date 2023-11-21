@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Card Selection</title>
     <style>
-        *{
+         *{
 	margin: 0;
 	padding: 0;
 	font-family: century Gothic;
@@ -14,17 +14,20 @@ header{
 	background: #212121;
 	width: 100%;
 	height: 80px;
-	position:relative ;
-	border-radius: 20px;
+	position:relative;
 }
+
 main{
 	width: 100%;
 	height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 	background-image: url(bg.jpg);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-    margin-top:15px;
+    margin-top: -100px;
 }
 ul{
 	float: right;
@@ -54,10 +57,10 @@ ul li.active a{
 .logo img{
 	position:relative;
 	top: 0;
-	margin-left:-85px;
+	margin-left:-80px;
 	float:left;
-	width: 110px;
-	height: 95px;
+	width: 100px;
+	height: 80px;
 }
 .main{
 	max-width: 1200px;
@@ -69,12 +72,13 @@ ul li.active a{
             padding: 10px;
             margin: 10px;
             width: 250px;
-            height: 250px;
+            height: 310px;
             margin-left: 45px;
             display: inline-block;
             justify-content: center;
             align-items: center;
             text-align: center;
+            margin-top:90px;
         }
 
         h2 {
@@ -85,14 +89,14 @@ ul li.active a{
 	        font-family: cursive;
 	        display: flex;
 	        justify-content: center;
-        }
+	 }
 
         .card img {
             max-width: 100%; /* Ensure the image does not exceed the width of the card */
             max-height: 90%; /* Adjust the height as needed */
             border-radius: 8px; /* Add rounded corners for a nicer look */
             display: inline-block; /* Remove any default inline spacing */
-    margin: auto;
+            margin: auto;
         }
         .checkout-btn{
             position:absolute;
@@ -109,6 +113,11 @@ ul li.active a{
             border: 1px solid #333;
             padding: 10px;
             margin-top: 20px;
+        }
+
+        .nonveg-pizza-head{
+            position: absolute;
+            margin-top:-770px;
         }
     </style>
 </head>
@@ -128,29 +137,35 @@ ul li.active a{
   </div>
 </header>
 <main>
-    <h2>NON-VEG PIZZA</h2>
+<div class="nonveg-pizza-head"><h2>NON-VEG PIZZA</h2></div>
 
-    <form action="checkout.php" method="post">
+    <form action="checkout1.php" method="post">
     <input type="submit" class="checkout-btn" value="Checkout">
         <?php
         // Assume you have an array of cards with associated image paths
         session_start();
         $cards = array(
-            "CHICKEN FIESTA" => "chicken fiesta.jpg",
-            "CHICKEN DOMINATOR" => "chicken-dominator.jpg",
-            "CHICKEN GOLDEN DELIGHT" => "chicken-golden.jpg",
-            "PERI PERI CHICKEN" => "peri-peri-chicken.jpg",
-            "PEPPER BARBECUE CHICKEN" => "pepper-barbecue.jpg",
-            "INDI CHICKEN TIKKA" => "tikka.png",
-            "CHICKEN PEPPERONI " => "pepperoni.png",
-            "CHICKEN SAUSAGE" => "chicken sausage.png"
+            "CHICKEN FIESTA"  => array("image" => "chicken fiesta.jpg", "price" => 200),
+            "CHICKEN DOMINATOR"  => array("image" =>"chicken-dominator.jpg", "price" => 200),
+            "CHICKEN GOLDEN DELIGHT"  => array ("image" =>"chicken-golden.jpg", "price" => 200),
+            "PERI PERI CHICKEN"  => array("image" => "peri-peri-chicken.jpg", "price" => 200),
+            "PEPPER BARBECUE CHICKEN"  => array("image" => "pepper-barbecue.jpg", "price" => 200),
+            "INDI CHICKEN TIKKA"  => array( "image" =>"tikka.png", "price" => 200),
+            "CHICKEN PEPPERONI "  => array("image" => "pepperoni.png", "price" => 200),
+            "CHICKEN SAUSAGE"  => array ("image" =>"chicken sausage.png" ,"price" => 200)
         );
 
         // Loop through the cards and display them with checkboxes
-        foreach ($cards as $card => $imagePath) {
+        foreach ($cards as $card => $data) {
             echo '<div class="card">';
             echo '<label><input type="checkbox" name="items[]" value="' . $card . '">'; // Add checkboxes
-            echo '<img src="' . $imagePath . '" alt="' . $card . '">' . $card . '</label></div>';
+            echo '<img src="' . $data["image"] . '" alt="' . $card . '">' . $card . '<br>';
+            echo 'Price: Rs' . number_format($data["price"], 2) . '</label>';
+            
+            // Add hidden input field for the price
+            echo '<input type="hidden" name="prices[' . $card . ']" value="' . $data["price"] . '">';
+            
+            echo '</div>';
         }
         ?>
         

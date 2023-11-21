@@ -235,3 +235,214 @@ if ($result->num_rows == 1) {
    
     
     ?>
+
+
+    this is checkout original code:.................................
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-image: url(bg.jpg);
+        }
+
+        table{
+            margin-top: 150px;
+            color: white;
+        }
+
+        
+    </style>
+</head>
+<body>
+    
+
+<?php
+// Assume you have a database connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "pizza";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+session_start();
+
+$usr_name = $_SESSION["username"];
+
+$sql_query = "select id from user_details where username='$usr_name'";
+
+$cart_items = $_POST["items"];
+
+
+
+$items_in_card_string = "";
+$sql = "SELECT username, cart FROM user_details";
+$result = mysqli_query($conn, $sql);
+
+// Display the data
+if ($result->num_rows > 0) {
+    echo "<table border='1'>
+            <tr>
+                <th>Username</th>
+                <th>Cart</th>
+            </tr>";
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr>
+                <td>" . $row['username'] . "</td>
+                <td>" . $row['cart'] . "</td>
+            </tr>";
+    }
+    echo "</table>";
+} else {
+    echo "No records found";
+}
+foreach($cart_items as $cart_item){
+    $items_in_card_string = $items_in_card_string . ", " . $cart_item;
+}
+
+$items_in_card_string = ltrim($items_in_card_string, ",");
+
+
+
+if(isset($_POST['items'])){
+ $sql = "update user_details set cart='$items_in_card_string' where username='$usr_name'";
+
+$s = mysqli_query($conn,$sql);
+
+if ($conn->query($sql) === TRUE) {
+    echo "cart saved";
+    $sql1 = "select cart from user_details where username = '$usr_name';";
+    $result = mysqli_query($conn, $sql1);
+    $row = mysqli_fetch_assoc($result);
+    echo " for $usr_name";
+    echo $row["cart"];
+} else {
+    echo "Error: " . $sql . "<br>" . $db->error;
+}
+}
+
+
+$conn->close();
+?>
+
+</body>
+</html>
+*{
+	margin: 0;
+	padding: 0;
+	font-family: century Gothic;
+}
+header{
+	background: #212121;
+	width: 100%;
+	height: 80px;
+	position:relative ;
+	border-radius: 20px;
+}
+main{
+	width: 100%;
+	height: 100%;
+	background-image: url(bg.jpg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+    margin-top:15px;
+}
+ul{
+	float: right;
+	list-style-type: none;
+	margin-top: 30px;
+}
+ul li{
+	display: inline-block;
+}
+ul li a{
+	text-decoration: none;
+	color:white;
+	font-weight: 600 ;
+	padding: 5px 20px;
+	border: 1px solid transparent;
+	transition: 0.6s ease;
+	border-radius: 20px;
+}
+ul li a:hover{
+	background-color:white;
+	color:black;
+}
+ul li.active a{
+	background-color: white;
+	color: black;
+}
+.logo img{
+	position:relative;
+	top: 0;
+	margin-left:-85px;
+	float:left;
+	width: 110px;
+	height: 95px;
+}
+.main{
+	max-width: 1200px;
+	margin: auto;
+}
+        /* Add some basic styling for clarity */
+        .card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            width: 250px;
+            height: 250px;
+            margin-left: 45px;
+            display: inline-block;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        h2 {
+            text-align: center;
+            color: black;
+	        font-size: 40px;
+	        text-shadow: 2px 2px 2px #000;
+	        font-family: cursive;
+	        display: flex;
+	        justify-content: center;
+        }
+
+        .card img {
+            max-width: 100%; /* Ensure the image does not exceed the width of the card */
+            max-height: 90%; /* Adjust the height as needed */
+            border-radius: 8px; /* Add rounded corners for a nicer look */
+            display: inline-block; /* Remove any default inline spacing */
+    margin: auto;
+        }
+        .checkout-btn{
+            position:absolute;
+            top:130px;
+            margin-left: 1200px;
+            color:black;
+            font-size: 15px;
+            font-weight:500;
+            width:6%;
+            height:30px;
+            background:white;
+        }
+        #cart {
+            border: 1px solid #333;
+            padding: 10px;
+            margin-top: 20px;
+        }

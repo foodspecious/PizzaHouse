@@ -14,17 +14,20 @@ header{
 	background: #212121;
 	width: 100%;
 	height: 80px;
-	position:relative ;
-	border-radius: 20px;
+	position:relative;
 }
+
 main{
 	width: 100%;
 	height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 	background-image: url(bg.jpg);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-    margin-top:15px;
+    margin-top: -100px;
 }
 ul{
 	float: right;
@@ -54,10 +57,10 @@ ul li.active a{
 .logo img{
 	position:relative;
 	top: 0;
-	margin-left:-85px;
+	margin-left:-80px;
 	float:left;
-	width: 110px;
-	height: 95px;
+	width: 100px;
+	height: 80px;
 }
 .main{
 	max-width: 1200px;
@@ -69,12 +72,13 @@ ul li.active a{
             padding: 10px;
             margin: 10px;
             width: 250px;
-            height: 250px;
+            height: 310px;
             margin-left: 45px;
             display: inline-block;
             justify-content: center;
             align-items: center;
             text-align: center;
+            margin-top:90px;
         }
 
         h2 {
@@ -110,6 +114,11 @@ ul li.active a{
             padding: 10px;
             margin-top: 20px;
         }
+
+        .veg-pizza-head{
+            position: absolute;
+            margin-top:-770px;
+        }
     </style>
 </head>
 <body>
@@ -128,30 +137,38 @@ ul li.active a{
   </div>
 </header>
 <main>
-    <h2>VEG PIZZA</h2>
+    <div class="veg-pizza-head"><h2>VEG PIZZA</h2></div>
 
     <form action="checkout.php" method="post">
     <input type="submit" class="checkout-btn" value="Checkout">
         <?php
         // Assume you have an array of cards with associated image paths
         session_start();
-        $cards = array(
-            "MEXICAN GREEN WAVE" => "mexican green wave.jpg",
-            "DELUX VEGGIE" => "delux veggie.jpg",
-            "PEPPY PANEER" => "peppy paneer.jpg",
-            "DOUBLE CHEESE MARGHERITA" => "d cheese margherita.jpg",
-            "VEG EXTRAVANCA" => "veg extravanca.jpg",
-            "CHEESE TOMATO" => "cheese tomato.png",
-            "TOMATO " => "tomato pizza.png",
-            "PRIME CHEESY" => "PrimeCheesy.jpg"
-        );
+            $cards = array(
+                "MEXICAN GREEN WAVE" => array("image" => "mexican green wave.jpg", "price" => 150),
+                "DELUX VEGGIE" => array("image" => "delux veggie.jpg", "price" => 150),
+                "PEPPY PANEER" => array("image" => "peppy paneer.jpg", "price" => 150),
+                "DOUBLE CHEESE MARGHERITA" => array("image" => "d cheese margherita.jpg", "price" => 150),
+                "VEG EXTRAVAGANZA" => array("image" => "veg extravanca.jpg", "price" => 150),
+                "CHEESE TOMATO" => array("image" => "cheese tomato.png", "price" => 150),
+                "TOMATO" => array("image" => "tomato pizza.png", "price" => 150),
+                "PRIME CHEESY" => array("image" => "PrimeCheesy.jpg", "price" => 150)
+            );
+            
 
         // Loop through the cards and display them with checkboxes
-        foreach ($cards as $card => $imagePath) {
+        foreach ($cards as $card => $data) {
             echo '<div class="card">';
             echo '<label><input type="checkbox" name="items[]" value="' . $card . '">'; // Add checkboxes
-            echo '<img src="' . $imagePath . '" alt="' . $card . '">' . $card . '</label></div>';
+            echo '<img src="' . $data["image"] . '" alt="' . $card . '">' . $card . '<br>';
+            echo 'Price: Rs' . number_format($data["price"], 2) . '</label>';
+            
+            // Add hidden input field for the price
+            echo '<input type="hidden" name="prices[' . $card . ']" value="' . $data["price"] . '">';
+            
+            echo '</div>';
         }
+        
         ?>
        
     </form>

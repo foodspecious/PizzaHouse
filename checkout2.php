@@ -169,11 +169,11 @@ if (isset($_POST['items'])) {
 
         foreach ($cart_items as $item) {
             // Fetch the price from your $cards array or database
-            $price = 150; // Replace this with the actual price retrieval logic
+            $price = 100; // Replace this with the actual price retrieval logic
 
             echo "<tr>
                     <td>$item</td>
-                    <td>RS" . number_format($price, 2) . "</td>
+                    <td>Rs" . number_format($price, 2) . "</td>
                 </tr>";
 
             $totalPrice += $price;

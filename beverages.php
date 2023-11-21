@@ -10,21 +10,24 @@
 	padding: 0;
 	font-family: century Gothic;
 }
+
+body{
+    background-image: url(bg.jpg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
 header{
 	background: #212121;
 	width: 100%;
 	height: 80px;
-	position:relative ;
-	border-radius: 20px;
+	position:relative;
 }
 main{
 	width: 100%;
 	height: 100%;
-	background-image: url(bg.jpg);
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-    margin-top:15px;
+	
+    margin-top: 0px;
 }
 ul{
 	float: right;
@@ -69,7 +72,7 @@ ul li.active a{
             padding: 9px;
             margin: 10px;
             width: 250px;
-            height: 180px;
+            height: 185px;
             margin-left: 45px;
             display: inline-block;
             justify-content: center;
@@ -96,9 +99,11 @@ ul li.active a{
         }
         .checkout-btn{
             position:absolute;
-            top:130px;
+            top:110px;
             margin-left: 1200px;
             color:black;
+            border: none;
+            outline: none;
             font-size: 15px;
             font-weight:500;
             width:6%;
@@ -128,29 +133,35 @@ ul li.active a{
   </div>
 </header>
 <main>
-    <h2>BEVARAGES</h2>
+<div class="beverages-head"><h2>BEVARAGES</h2></div>
 
-    <form action="checkout.php" method="post">
+    <form action="checkout2.php" method="post">
     <input type="submit" class="checkout-btn" value="Checkout">
         <?php
         // Assume you have an array of cards with associated image paths
         session_start();
         $cards = array(
-            "HOT BEVARAGES" => "hot bevarages.jpg",
-            "JUICES" => "juices.jpg",
-            "ICED LEMON TEA" => "Iced-Lemon-Tea.jpg",
-            "SUMMER COCKTAILS" => "summer-cocktails.jpg",
-            "SHAKES" => "shakes.jpg",
-            "WINES" => "wines.jpg",
-            "COLD BEVARAGES " => "cold beverages.png",
-            "JUICY SHOTS" => "juicy shots.jpg"
+            "HOT BEVARAGES" =>array("image" => "hot bevarages.jpg", "price" => 100),
+            "JUICES" =>array("image" => "juices.jpg", "price" => 100),
+            "ICED LEMON TEA" =>array("image" => "Iced-Lemon-Tea.jpg", "price" => 100),
+            "SUMMER COCKTAILS" =>array("image" => "summer-cocktails.jpg", "price" => 100),
+            "SHAKES" =>array("image" => "shakes.jpg", "price" => 100),
+            "WINES" =>array("image" => "wines.jpg", "price" => 100),
+            "COLD BEVARAGES " =>array("image" => "cold beverages.png", "price" => 100),
+            "JUICY SHOTS" =>array("image" => "juicy shots.jpg", "price" => 100)
         );
 
         // Loop through the cards and display them with checkboxes
-        foreach ($cards as $card => $imagePath) {
+        foreach ($cards as $card => $data) {
             echo '<div class="card">';
             echo '<label><input type="checkbox" name="items[]" value="' . $card . '">'; // Add checkboxes
-            echo '<img src="' . $imagePath . '" alt="' . $card . '">' . $card . '</label></div>';
+            echo '<img src="' . $data["image"] . '" alt="' . $card . '">' . $card . '<br>';
+            echo 'Price: Rs' . number_format($data["price"], 2) . '</label>';
+            
+            // Add hidden input field for the price
+            echo '<input type="hidden" name="prices[' . $card . ']" value="' . $data["price"] . '">';
+            
+            echo '</div>';
         }
         ?>
         
